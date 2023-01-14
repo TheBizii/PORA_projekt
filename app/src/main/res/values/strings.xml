@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Formula one app</string>
+    <string name="view_map">View map</string>
+    <string name="open_input">Open input</string>
+    <string name="path">Path</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="duration">Duration</string>
+    <string name="intensity">Intensity</string>
+    <string name="type">Type</string>
+    <string name="summer">Summer</string>
+    <string name="winter">Winter</string>
+    <string name="add">Add</string>
+    <string name="exit">Exit</string>
+</resources>

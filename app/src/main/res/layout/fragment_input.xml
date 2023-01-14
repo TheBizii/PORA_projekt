@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InputFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/side_margin">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/guidelineVertical" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="@dimen/guidelineHorizontal" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#2787EF"
+                android:contentDescription="@string/path"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/path" />
+
+            <TextView
+                android:id="@+id/textViewStart"
+                android:layout_width="87dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/start"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintBaseline_toBaselineOf="@id/dropdownMenuStart"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdownMenuStart"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:autofillHints="150"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewStart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:text="@string/start" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewEnd"
+                android:layout_width="87dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/end"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintBaseline_toBaselineOf="@id/dropdownMenuEnd"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdownMenuEnd"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:autofillHints="150"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/dropdownMenuStart">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewEnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:text="@string/end" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewHeight"
+                android:layout_width="87dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/duration"
+                app:layout_constraintBaseline_toBaselineOf="@+id/editTextDuration"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
+
+            <EditText
+                android:id="@+id/editTextDuration"
+                android:layout_width="230dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="150"
+                android:hint="@string/duration"
+                android:inputType="numberSigned"
+                android:textColorHint="#757575"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/dropdownMenuEnd" />
+
+            <TextView
+                android:id="@+id/textViewIntensity"
+                android:layout_width="87dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/intensity"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintBaseline_toBaselineOf="@id/dropdownMenuIntensity"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdownMenuIntensity"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:autofillHints="150"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDuration">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewIntensity"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:text="@string/intensity" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewType"
+                android:layout_width="87dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/type"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintBaseline_toBaselineOf="@id/dropdownMenuType"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/dropdownMenuType"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:autofillHints="150"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/dropdownMenuIntensity">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:text="@string/type" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewSummer"
+                android:layout_width="87dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/summer"
+                app:layout_constraintBaseline_toBaselineOf="@+id/editTextSummer"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
+
+            <EditText
+                android:id="@+id/editTextSummer"
+                android:layout_width="230dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="150"
+                android:hint="@string/summer"
+                android:inputType="text"
+                android:textColorHint="#757575"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/dropdownMenuType" />
+
+            <TextView
+                android:id="@+id/textViewWinter"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="@string/winter"
+                app:layout_constraintBaseline_toBaselineOf="@+id/editTextWinter"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
+
+            <EditText
+                android:id="@+id/editTextWinter"
+                android:layout_width="230dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="150"
+                android:hint="@string/winter"
+                android:inputType="text"
+                android:textColorHint="#757575"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/editTextSummer" />
+
+            <Button
+                android:id="@+id/buttonAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_primary"
+                android:drawableLeft="@drawable/ic_outline_border_color_24"
+                android:text="@string/add"
+                app:layout_constraintEnd_toStartOf="@+id/buttonExit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewWinter" />
+
+            <Button
+                android:id="@+id/buttonExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_error"
+                android:drawableLeft="@drawable/ic_baseline_close_24"
+                android:text="@string/exit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/buttonAdd"
+                app:layout_constraintTop_toBottomOf="@+id/editTextWinter" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

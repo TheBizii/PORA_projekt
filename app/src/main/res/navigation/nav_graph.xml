@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="me.pora_project.main.StartFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_inputFragment"
+            app:destination="@id/inputFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputFragment"
+        android:name="me.pora_project.main.InputFragment"
+        android:label="@string/open_input"
+        tools:layout="@layout/fragment_input"/>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="me.pora_project.main.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
+</navigation>
