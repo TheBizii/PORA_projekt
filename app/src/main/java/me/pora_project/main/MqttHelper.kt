@@ -2,7 +2,8 @@ package me.pora_project.main
 
 import android.content.Context
 import android.util.Log
-import org.eclipse.paho.android.service.MqttAndroidClient
+//import org.eclipse.paho.android.service.MqttAndroidClient
+import info.mqtt.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttActionListener
 import org.eclipse.paho.client.mqttv3.IMqttToken
 import org.eclipse.paho.client.mqttv3.MqttClient
@@ -34,7 +35,7 @@ TLS Websocket Port: 8884
 
 class MqttHelper (context: Context) {
 
-    public var mqttClient: MqttAndroidClient
+    var mqttClient: MqttAndroidClient
 
     companion object {
         val TAG = MqttHelper::class.simpleName
@@ -60,6 +61,7 @@ class MqttHelper (context: Context) {
                 }
 
                 override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
+                    Log.e(TAG, exception?.message.toString())
                     Log.e(TAG, exception?.stackTrace.contentToString())
                     Log.d(TAG, "Connection failure")
                 }

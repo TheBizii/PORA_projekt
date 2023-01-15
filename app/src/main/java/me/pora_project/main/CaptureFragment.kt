@@ -21,13 +21,17 @@ import me.pora_project.main.databinding.FragmentCaptureBinding
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
 import org.eclipse.paho.client.mqttv3.MqttCallback
 import org.eclipse.paho.client.mqttv3.MqttMessage
+import java.io.BufferedReader
 import java.io.File
+import java.io.FileReader
+import java.time.LocalDateTime
 
 
 /**
 [CaptureFragment] Settings screen to set interval for inputs
  */
 class CaptureFragment : Fragment(), SensorEventListener {
+  private lateinit var time: String
   private lateinit var mSensorManager: SensorManager
   private lateinit var mGyroscope: Sensor
   private var loopback: Boolean = false
@@ -57,8 +61,6 @@ class CaptureFragment : Fragment(), SensorEventListener {
     mSensorManager = context?.getSystemService(SENSOR_SERVICE) as SensorManager;
     mGyroscope = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
 
-    mqttHelper = MqttHelper(requireContext())
-    startMqtt()
     return fragmentBinding.root
   }
 
@@ -68,6 +70,9 @@ class CaptureFragment : Fragment(), SensorEventListener {
     val navController = Navigation.findNavController(view);
     binding!!.camera.setLifecycleOwner(viewLifecycleOwner);
 
+    mqttHelper = MqttHelper(requireContext())
+    startMqtt()
+
     list = mutableSetOf(
       CAMERA_SLIDER,
       AUDIO_SLIDER,
@@ -75,6 +80,7 @@ class CaptureFragment : Fragment(), SensorEventListener {
     )
 
     val out = preferences.show(list);
+    time = LocalDateTime.now().toString()
 
     binding!!.buttonStart.setOnClickListener {
       loopback = true
@@ -91,25 +97,8 @@ class CaptureFragment : Fragment(), SensorEventListener {
 
     binding!!.camera.addCameraListener(object : CameraListener() {
       override fun onPictureTaken(result: PictureResult) {
-        // Picture was taken!
-        // If planning to show a Bitmap, we will take care of
-        // EXIF rotation and background threading for you...
-        //val maxWidth = 200
-        //val maxHeight = 200
-
-        /*result.toBitmap(maxWidth, maxHeight) {
-          println("Callback")
-        }*/
-
-        // If planning to save a file on a background thread,
-        // just use toFile. Ensure you have permissions.
-        //result.toFile(File("file.jpg")) {
-        //println("Callback")
-        //}
-
-        // Access the raw data if needed.
-        val data = result.data
-        mqttHelper.publish(MqttHelper.CAMERA_TOPIC, "a|b|$data")
+        val data = String(result.data)
+        mqttHelper.publish(MqttHelper.CAMERA_TOPIC, "$data|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}")
       }
     })
 
@@ -149,6 +138,16 @@ class CaptureFragment : Fragment(), SensorEventListener {
           recorder.prepare()
           recorder.start()
           recorder.stop();
+          val file = File(audioFile.absolutePath)
+          val br = BufferedReader(FileReader(file))
+          val text = StringBuilder()
+          var line: String? = null
+          do {
+            line = br.readLine()
+            text.append(line)
+            text.append('\n')
+          } while(line != null)
+          mqttHelper.publish(MqttHelper.AUDIO_TOPIC, "$text|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}")
         } catch (e: Exception) {
           println(e)
         } finally {
@@ -178,8 +177,7 @@ class CaptureFragment : Fragment(), SensorEventListener {
       val x: Float = event.values[0]
       val y: Float = event.values[1]
       val z: Float = event.values[2]
-      //println("$x, $y, $z")
-      // Do something with the gyroscope data
+      mqttHelper.publish(MqttHelper.GYROSCOPE_TOPIC, "$x,$y,$z|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}")
     }
   }
 

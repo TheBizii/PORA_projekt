@@ -97,7 +97,7 @@ aedes.on('publish', async function(packet, client) {
                 }
             }
         } finally {
-            await mongo_client.close();
+            //await mongo_client.close();
         }
         console.log(`MESSAGE_PUBLISHED : MQTT Client ${(client ? client.id : 'AEDES BROKER_' + aedes.id)} has published message "${packet.payload}" on ${packet.topic} to aedes broker ${aedes.id}`)
     }

@@ -38,7 +38,7 @@ class MapFragment : Fragment() {
   private val mapController get() = _mapController!!
   private var activityResultLauncher: ActivityResultLauncher<Array<String>>
   private lateinit var fusedLocationClient: FusedLocationProviderClient //https://developer.android.com/training/location/retrieve-current
-  private var lastLoction: Location? = null
+  private var lastLocation: Location? = null
   private var locationCallback: LocationCallback
   private var locationRequest: com.google.android.gms.location.LocationRequest = com.google.android.gms.location.LocationRequest.create()
     .apply {
@@ -163,11 +163,9 @@ class MapFragment : Fragment() {
   }
 
   fun updateLocation(newLocation: Location) {
-    lastLoction = newLocation
+    lastLocation = newLocation
+    sharedViewModel.lastLocation = newLocation
     //GUI, MAP TODO
-    //binding.tvLat.setText(newLocation.latitude.toString())
-    //binding.tvLon.setText(newLocation.longitude.toString())
-    //var currentPoint: GeoPoint = GeoPoint(newLocation.latitude, newLocation.longitude);
     startPoint.longitude = newLocation.longitude
     startPoint.latitude = newLocation.latitude
     mapController.setCenter(startPoint)
