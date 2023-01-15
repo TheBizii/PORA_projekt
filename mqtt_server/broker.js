@@ -3,7 +3,9 @@ const server = require('net').createServer(aedes.handle)
 const httpServer = require('http').createServer()
 const ws = require('websocket-stream')
 require('dotenv').config()
-const { MongoClient } = require("mongodb");
+const {
+    MongoClient
+} = require("mongodb");
 
 MQTT_Port = 1884
 const wsPort = 8884
@@ -61,24 +63,38 @@ aedes.on('unsubscribe', function(subscriptions, client) {
 aedes.on('publish', async function(packet, client) {
     if (client) {
         try {
-            if(packet.topic == 'temperature_update') {
-                await mongo_client.connect();
-                const parts = String(packet.payload).split("|");
-                const temperature = parts[0];
+            await mongo_client.connect();
+            const parts = String(packet.payload).split("|");
+
+            if (parts.length >= 3) {
+                const pload = parts[0];
                 const time = parts[1];
                 const location = parts[2];
+
                 const doc = {
-                    temperature: temperature,
+                    payload: pload,
                     time: time,
                     location: location,
                     client: (client ? client.id : 'AEDES BROKER_' + aedes.id),
                     broker: aedes.id
                 }
 
-                const insertResult = await mongo_client.db(process.env.MONGO_DATABASE).collection('temperature_updates').insertOne(doc);
-                console.log(
-                   `A document was inserted with the _id: ${insertResult.insertedId}`,
-                );
+                if (packet.topic == 'gyroscope_update') {
+                    const insertResult = await mongo_client.db(process.env.MONGO_DATABASE).collection('gyroscope_updates').insertOne(doc);
+                    console.log(
+                        `A document was inserted with the _id: ${insertResult.insertedId}`,
+                    );
+                } else if (packet.topic == 'audio_update') {
+                    const insertResult = await mongo_client.db(process.env.MONGO_DATABASE).collection('audio_updates').insertOne(doc);
+                    console.log(
+                        `A document was inserted with the _id: ${insertResult.insertedId}`,
+                    );
+                } else if (packet.topic == 'camera_update') {
+                    const insertResult = await mongo_client.db(process.env.MONGO_DATABASE).collection('camera_updates').insertOne(doc);
+                    console.log(
+                        `A document was inserted with the _id: ${insertResult.insertedId}`,
+                    );
+                }
             }
         } finally {
             await mongo_client.close();
