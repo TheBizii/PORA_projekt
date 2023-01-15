@@ -10,7 +10,7 @@ var client = mqtt.connect('mqtt://localhost:1884', {
 client.on('connect', function() { // When connected
 
   // subscribe to a topic
-  client.subscribe('hello/world', function() {
+  client.subscribe('temperature_update', function() {
     // when a message arrives, do something with it
     client.on('message', function(topic, message, packet) {
       console.log("Received '" + message + "' on '" + topic + "'");
@@ -18,7 +18,7 @@ client.on('connect', function() { // When connected
   });
 
   // publish a message to a topic
-  client.publish('hello/world', 'my message', function() {
+  client.publish('temperature_update', '25 stopinj|danes|Maribor', function() {
     console.log("Message is published");
     client.end(); // Close the connection when published
   });
