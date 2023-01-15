@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
+    tools:context=".CaptureFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_settings_192" />
+                app:srcCompat="@drawable/ic_baseline_sensors_192" />
 
             <com.otaliastudios.cameraview.CameraView
                 android:id="@+id/camera"

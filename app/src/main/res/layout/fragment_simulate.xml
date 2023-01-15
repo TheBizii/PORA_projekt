@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SimulateFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/side_margin">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/guidelineVertical" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="@dimen/guidelineHorizontal" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/path"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_cyclone_192" />
+
+            <TextView
+                android:id="@+id/textViewFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:gravity="center"
+                android:text="@string/from"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineHorizontal" />
+
+            <EditText
+                android:id="@+id/editTextFrom"
+                android:layout_width="230dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="3"
+                android:ems="10"
+                android:hint="@string/from"
+                android:inputType="number|numberSigned"
+                android:textColorHint="#757575"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
+
+            <TextView
+                android:id="@+id/textViewTo"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:gravity="center"
+                android:text="@string/to"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/textViewFrom" />
+
+            <EditText
+                android:id="@+id/editTextTo"
+                android:layout_width="230dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="3"
+                android:ems="10"
+                android:hint="@string/to"
+                android:inputType="number|numberSigned"
+                android:textColorHint="#757575"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/editTextFrom" />
+
+            <Button
+                android:id="@+id/buttonSimulate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:background="@drawable/button_primary"
+                android:text="@string/simulate"
+                app:layout_constraintEnd_toStartOf="@+id/buttonStop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextTo" />
+
+            <Button
+                android:id="@+id/buttonStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:background="@drawable/button_error"
+                android:text="@string/stop"
+                app:layout_constraintEnd_toStartOf="@id/buttonExit"
+                app:layout_constraintStart_toEndOf="@id/buttonSimulate"
+                app:layout_constraintTop_toBottomOf="@id/editTextTo" />
+
+            <Button
+                android:id="@+id/buttonExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:background="@drawable/button_error"
+                android:text="@string/exit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonStop"
+                app:layout_constraintTop_toBottomOf="@id/editTextTo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

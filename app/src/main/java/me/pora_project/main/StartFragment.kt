@@ -37,6 +37,9 @@ class StartFragment : Fragment() {
     binding!!.openCapture.setOnClickListener {
       navController.navigate(R.id.action_startFragment_to_captureFragment);
     }
+    binding!!.openSimulate.setOnClickListener {
+      navController.navigate(R.id.action_startFragment_to_simulateFragment);
+    }
     binding!!.openSettings.setOnClickListener {
       navController.navigate(R.id.action_startFragment_to_settingsFragment);
     }

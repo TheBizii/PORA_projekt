@@ -153,7 +153,7 @@ class CaptureFragment : Fragment(), SensorEventListener {
         } finally {
           recorder.release()
           if (loopback) {
-            handler.postDelayed(this, out[1].toLong() * 100)
+            handler.postDelayed(this, out[1].toLong() * 10)
           }
         }
       }
