@@ -32,13 +32,20 @@
                 android:textColor="@color/material_on_background_emphasis_medium" />
 
             <Button
-                android:id="@+id/open_input"
+                android:id="@+id/open_capture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_between_elements"
-                android:minWidth="@dimen/order_cupcake_button_width"
-                android:text="@string/open_input" />
+                android:text="@string/capture" />
+
+            <Button
+                android:id="@+id/open_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:text="@string/open_settings" />
 
             <Button
                 android:id="@+id/view_map"
@@ -46,7 +53,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/margin_between_elements"
-                android:minWidth="@dimen/order_cupcake_button_width"
                 android:text="@string/view_map" />
         </LinearLayout>
     </ScrollView>

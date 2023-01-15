@@ -10,20 +10,27 @@
         android:label="@string/app_name"
         tools:layout="@layout/fragment_start">
         <action
-            android:id="@+id/action_startFragment_to_inputFragment"
-            app:destination="@id/inputFragment" />
+            android:id="@+id/action_startFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/action_startFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_captureFragment"
+            app:destination="@id/captureFragment" />
     </fragment>
     <fragment
-        android:id="@+id/inputFragment"
-        android:name="me.pora_project.main.InputFragment"
+        android:id="@+id/settingsFragment"
+        android:name="me.pora_project.main.SettingsFragment"
         android:label="@string/open_input"
-        tools:layout="@layout/fragment_input"/>
+        tools:layout="@layout/fragment_settings"/>
     <fragment
         android:id="@+id/mapFragment"
         android:name="me.pora_project.main.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/captureFragment"
+        android:name="me.pora_project.main.CaptureFragment"
+        android:label="CaptureFragment" />
 </navigation>

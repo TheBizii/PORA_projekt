@@ -10,7 +10,7 @@ import androidx.navigation.Navigation
 import me.pora_project.main.databinding.FragmentStartBinding
 
 /**
- * This is the first screen of the Cupcake app. The user can choose how many cupcakes to order. When a button is clicked, it sets the quantity value in the shared view model and then navigates to the next fragment by <code>findNavController().navigate(R.id.action_startFragment_to_flavorFragment)</code>, where R.id.action_startFragment_to_flavorFragment is the action id defined in nav_graph.xml
+ * This is first screen of app where you collect data on intervals
  */
 class StartFragment : Fragment() {
 
@@ -34,8 +34,11 @@ class StartFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val navController = Navigation.findNavController(view);
-    binding!!.openInput.setOnClickListener {
-      navController.navigate(R.id.action_startFragment_to_inputFragment);
+    binding!!.openCapture.setOnClickListener {
+      navController.navigate(R.id.action_startFragment_to_captureFragment);
+    }
+    binding!!.openSettings.setOnClickListener {
+      navController.navigate(R.id.action_startFragment_to_settingsFragment);
     }
     binding!!.viewMap.setOnClickListener {
       navController.navigate(R.id.action_startFragment_to_mapFragment);

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/side_margin">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="@dimen/guidelineVertical" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="@dimen/guidelineHorizontal" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:contentDescription="@string/path"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_settings_192" />
+
+            <TextView
+                android:id="@+id/textViewCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:gravity="center"
+                android:text="@string/camera"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/cameraSlider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/camera_slider"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:value="20.0"
+                android:valueFrom="0.0"
+                android:valueTo="100.0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
+
+            <TextView
+                android:id="@+id/textViewAudioAmplitude"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:gravity="center"
+                android:text="@string/amplitude"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCamera" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/audioAmplitudeSlider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:contentDescription="@string/audio_amplitude_slider"
+                android:value="20.0"
+                android:valueFrom="0.0"
+                android:valueTo="100.0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/cameraSlider" />
+
+            <TextView
+                android:id="@+id/textViewAudioScope"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:gravity="center"
+                android:text="@string/scope"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAudioAmplitude"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/audioScopeSlider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:contentDescription="@string/audio_scope_slider"
+                android:value="20.0"
+                android:valueFrom="0.0"
+                android:valueTo="100.0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/audioAmplitudeSlider" />
+
+            <TextView
+                android:id="@+id/textViewGyroscope"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:gravity="center"
+                android:text="@string/gyroscope"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAudioScope"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/gyroscopeSlider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:contentDescription="@string/gyroscope_slider"
+                android:value="20.0"
+                android:valueFrom="0.0"
+                android:valueTo="100.0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/audioScopeSlider" />
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:background="@drawable/button_primary"
+                android:drawableLeft="@drawable/ic_outline_save_24"
+                android:text="@string/save"
+                app:layout_constraintEnd_toStartOf="@+id/buttonExit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gyroscopeSlider" />
+
+            <Button
+                android:id="@+id/buttonExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:background="@drawable/button_error"
+                android:drawableLeft="@drawable/ic_baseline_close_24"
+                android:text="@string/exit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonSave"
+                app:layout_constraintTop_toBottomOf="@id/gyroscopeSlider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
