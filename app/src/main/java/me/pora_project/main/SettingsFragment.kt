@@ -18,9 +18,8 @@ class SettingsFragment : Fragment() {
   private lateinit var bindingsArray: Array<Slider>
   private lateinit var list: MutableMap<String, Float>
   private val CAMERA_SLIDER = "CAMERA_SLIDER"
-  private val AUDIO_AMPLITUDE = "AUDIO_AMPLITUDE"
-  private val AUDIO_SCOPE = "AUDIO_SCOPE"
-  private val GYROSCOPE = "GYROSCOPE"
+  private val AUDIO_SLIDER = "AUDIO_SLIDER"
+  private val GYROSCOPE_SLIDER = "GYROSCOPE_SLIDER"
   private lateinit var preferences: GetSharedPreferences
 
   // Binding object instance corresponding to the fragment_flavor.xml layout
@@ -47,16 +46,14 @@ class SettingsFragment : Fragment() {
 
     bindingsArray = arrayOf(
       binding!!.cameraSlider,
-      binding!!.audioAmplitudeSlider,
-      binding!!.audioScopeSlider,
+      binding!!.audioSlider,
       binding!!.gyroscopeSlider
     )
 
     list = mutableMapOf(
       CAMERA_SLIDER to binding!!.cameraSlider.value,
-      AUDIO_AMPLITUDE to binding!!.audioAmplitudeSlider.value,
-      AUDIO_SCOPE to binding!!.audioScopeSlider.value,
-      GYROSCOPE to binding!!.gyroscopeSlider.value,
+      AUDIO_SLIDER to binding!!.audioSlider.value,
+      GYROSCOPE_SLIDER to binding!!.gyroscopeSlider.value,
     )
 
     val out = preferences.show(list.keys);
@@ -69,9 +66,8 @@ class SettingsFragment : Fragment() {
       binding!!.buttonSave.setOnClickListener {
         list = mutableMapOf(
           CAMERA_SLIDER to binding!!.cameraSlider.value,
-          AUDIO_AMPLITUDE to binding!!.audioAmplitudeSlider.value,
-          AUDIO_SCOPE to binding!!.audioScopeSlider.value,
-          GYROSCOPE to binding!!.gyroscopeSlider.value,
+          AUDIO_SLIDER to binding!!.audioSlider.value,
+          GYROSCOPE_SLIDER to binding!!.gyroscopeSlider.value,
         )
         preferences.save(list)
         navController.popBackStack()

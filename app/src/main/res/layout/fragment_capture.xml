@@ -8,7 +8,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="-40dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,118 +43,41 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_settings_192" />
 
-            <TextView
-                android:id="@+id/textViewCamera"
+            <com.otaliastudios.cameraview.CameraView
+                android:id="@+id/camera"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:gravity="center"
-                android:text="@string/camera"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
-
-            <com.google.android.material.slider.Slider
-                android:id="@+id/cameraSlider"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/camera_slider"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:value="20.0"
-                android:valueFrom="0.0"
-                android:valueTo="100.0"
+                android:layout_height="300dp"
+                android:keepScreenOn="true"
+                app:layout_constraintBottom_toTopOf="@id/buttonStop"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/guidelineVertical"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
-            <TextView
-                android:id="@+id/textViewAudioAmplitude"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:gravity="center"
-                android:text="@string/amplitude"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/textViewCamera" />
-
-            <com.google.android.material.slider.Slider
-                android:id="@+id/audioAmplitudeSlider"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:contentDescription="@string/audio_amplitude_slider"
-                android:value="20.0"
-                android:valueFrom="0.0"
-                android:valueTo="100.0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/cameraSlider" />
-
-            <TextView
-                android:id="@+id/textViewAudioScope"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:gravity="center"
-                android:text="@string/scope"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAudioAmplitude"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
-
-            <com.google.android.material.slider.Slider
-                android:id="@+id/audioScopeSlider"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:contentDescription="@string/audio_scope_slider"
-                android:value="20.0"
-                android:valueFrom="0.0"
-                android:valueTo="100.0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/audioAmplitudeSlider" />
-
-            <TextView
-                android:id="@+id/textViewGyroscope"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:gravity="center"
-                android:text="@string/gyroscope"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAudioScope"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
-
-            <com.google.android.material.slider.Slider
-                android:id="@+id/gyroscopeSlider"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:contentDescription="@string/gyroscope_slider"
-                android:value="20.0"
-                android:valueFrom="0.0"
-                android:valueTo="100.0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/audioScopeSlider" />
 
             <Button
-                android:id="@+id/buttonSave"
+                android:id="@+id/buttonStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/side_margin"
                 android:background="@drawable/button_primary"
-                android:drawableLeft="@drawable/ic_outline_save_24"
-                android:text="@string/save"
-                app:layout_constraintEnd_toStartOf="@+id/buttonExit"
+                android:text="@string/start"
+                app:layout_constraintEnd_toStartOf="@id/buttonStop"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gyroscopeSlider" />
+                app:layout_constraintTop_toBottomOf="@id/camera" />
+
+            <Button
+                android:id="@+id/buttonStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/side_margin"
+                android:layout_marginEnd="@dimen/side_margin"
+                android:background="@drawable/button_error"
+                android:drawableLeft="@drawable/ic_baseline_close_24"
+                android:text="@string/stop"
+                app:layout_constraintEnd_toEndOf="@id/buttonExit"
+                app:layout_constraintStart_toEndOf="@id/buttonStart"
+                app:layout_constraintTop_toBottomOf="@id/camera" />
 
             <Button
                 android:id="@+id/buttonExit"
@@ -164,8 +89,8 @@
                 android:drawableLeft="@drawable/ic_baseline_close_24"
                 android:text="@string/exit"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/buttonSave"
-                app:layout_constraintTop_toBottomOf="@id/gyroscopeSlider" />
+                app:layout_constraintStart_toEndOf="@id/buttonStop"
+                app:layout_constraintTop_toBottomOf="@id/camera" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

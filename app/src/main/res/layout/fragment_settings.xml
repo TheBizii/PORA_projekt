@@ -60,61 +60,36 @@
                 android:layout_margin="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/side_margin"
                 android:value="20.0"
-                android:valueFrom="0.0"
+                android:valueFrom="1.0"
                 android:valueTo="100.0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/guidelineVertical"
                 app:layout_constraintTop_toTopOf="@+id/guidelineHorizontal" />
 
             <TextView
-                android:id="@+id/textViewAudioAmplitude"
+                android:id="@+id/textViewAudio"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_margin="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/side_margin"
                 android:gravity="center"
-                android:text="@string/amplitude"
+                android:text="@string/audio"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineVertical"
                 app:layout_constraintTop_toBottomOf="@+id/textViewCamera" />
 
             <com.google.android.material.slider.Slider
-                android:id="@+id/audioAmplitudeSlider"
+                android:id="@+id/audioSlider"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/side_margin"
-                android:contentDescription="@string/audio_amplitude_slider"
+                android:contentDescription="@string/audio_slider"
                 android:value="20.0"
                 android:valueFrom="0.0"
                 android:valueTo="100.0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
                 app:layout_constraintTop_toBottomOf="@+id/cameraSlider" />
-
-            <TextView
-                android:id="@+id/textViewAudioScope"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:gravity="center"
-                android:text="@string/scope"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAudioAmplitude"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
-
-            <com.google.android.material.slider.Slider
-                android:id="@+id/audioScopeSlider"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/side_margin"
-                android:layout_marginEnd="@dimen/side_margin"
-                android:contentDescription="@string/audio_scope_slider"
-                android:value="20.0"
-                android:valueFrom="0.0"
-                android:valueTo="100.0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/audioAmplitudeSlider" />
 
             <TextView
                 android:id="@+id/textViewGyroscope"
@@ -124,8 +99,8 @@
                 android:layout_marginEnd="@dimen/side_margin"
                 android:gravity="center"
                 android:text="@string/gyroscope"
-                app:layout_constraintTop_toBottomOf="@+id/textViewAudioScope"
-                app:layout_constraintEnd_toStartOf="@+id/guidelineVertical" />
+                app:layout_constraintTop_toBottomOf="@id/textViewAudio"
+                app:layout_constraintEnd_toStartOf="@id/guidelineVertical" />
 
             <com.google.android.material.slider.Slider
                 android:id="@+id/gyroscopeSlider"
@@ -134,12 +109,12 @@
                 android:layout_margin="@dimen/side_margin"
                 android:layout_marginEnd="@dimen/side_margin"
                 android:contentDescription="@string/gyroscope_slider"
-                android:value="20.0"
-                android:valueFrom="0.0"
-                android:valueTo="100.0"
+                android:value="2"
+                android:valueFrom="1"
+                android:valueTo="10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/audioScopeSlider" />
+                app:layout_constraintTop_toBottomOf="@id/audioSlider" />
 
             <Button
                 android:id="@+id/buttonSave"

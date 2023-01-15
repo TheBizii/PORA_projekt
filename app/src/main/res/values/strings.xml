@@ -24,4 +24,7 @@
     <string name="save">Save</string>
     <string name="open_settings">Open settings</string>
     <string name="capture">Capture</string>
+    <string name="stop">Stop</string>
+    <string name="audio_slider">Audio slider</string>
+    <string name="audio">Audio</string>
 </resources>

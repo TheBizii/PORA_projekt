@@ -3,6 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+def appPropertiesFile = rootProject.file("app/src/main/assets/digital_twin.properties");
+def appProperties = new Properties()
+appProperties.load(new FileInputStream(appPropertiesFile))
+
 android {
     namespace 'me.pora_project.main'
     compileSdk 32
@@ -13,6 +17,12 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "mqttServerUri", appProperties['mqtt.serverUri'])
+        buildConfigField("String", "mqttUser", appProperties['mqtt.user'])
+        buildConfigField("String", "mqttPassword", appProperties['mqtt.password'])
+        buildConfigField("String", "mqttCamera", appProperties["mqtt.camera"])
+        buildConfigField("String", "mqttAudio", appProperties["mqtt.audio"])
+        buildConfigField("String", "mqttGyroscope", appProperties["mqtt.gyroscope"])
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,6 +48,7 @@ android {
 
 dependencies {
 
+    api 'com.otaliastudios:cameraview:2.7.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
@@ -55,4 +66,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.4'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
 }

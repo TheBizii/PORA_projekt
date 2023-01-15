@@ -25,7 +25,7 @@ class GetSharedPreferences (ctx: Context?) {
     val out = mutableListOf<Float>()
     for (el in list){
       println(el)
-      out.add(sp.getString(el, "20.0")?.toFloat() ?: 20.0f)
+      out.add(sp.getString(el, "5.0")?.toFloat() ?: 5.0f)
     }
     return out;
   }
