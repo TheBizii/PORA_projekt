@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_between_elements">10dp</dimen>
-    <dimen name="order_cupcake_button_width">10dp</dimen>
     <dimen name="side_margin">10dp</dimen>
     <dimen name="image_height">200dp</dimen>
     <dimen name="image_width">300dp</dimen>
-    <dimen name="guidelineVertical">0.31</dimen>
+    <dimen name="guidelineVertical">0.30</dimen>
     <dimen name="guidelineHorizontal">0.40</dimen>
 </resources>

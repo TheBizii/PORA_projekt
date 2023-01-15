@@ -12,4 +12,16 @@
     <string name="winter">Winter</string>
     <string name="add">Add</string>
     <string name="exit">Exit</string>
+    <string name="camera_slider">Camera capture interval</string>
+    <string name="audio_amplitude_slider">Audio amplitude interval</string>
+    <string name="audio_scope_slider">Audio scope interval</string>
+    <string name="audio_spectrum_slider">Audio spectrum interval</string>
+    <string name="gyroscope_slider">Gyrscope interval</string>
+    <string name="scope">Scope</string>
+    <string name="camera">Camera</string>
+    <string name="amplitude">Amplitude</string>
+    <string name="gyroscope">Gyroscope</string>
+    <string name="save">Save</string>
+    <string name="open_settings">Open settings</string>
+    <string name="capture">Capture</string>
 </resources>
