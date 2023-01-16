@@ -59,19 +59,19 @@ class SettingsFragment : Fragment() {
     val out = preferences.show(list.keys);
     println(out)
 
-    for (i in bindingsArray.indices){
+    for (i in bindingsArray.indices) {
       bindingsArray[i].value = out[i]
     }
 
-      binding!!.buttonSave.setOnClickListener {
-        list = mutableMapOf(
-          CAMERA_SLIDER to binding!!.cameraSlider.value,
-          AUDIO_SLIDER to binding!!.audioSlider.value,
-          GYROSCOPE_SLIDER to binding!!.gyroscopeSlider.value,
-        )
-        preferences.save(list)
-        navController.popBackStack()
-      }
+    binding!!.buttonSave.setOnClickListener {
+      list = mutableMapOf(
+        CAMERA_SLIDER to binding!!.cameraSlider.value,
+        AUDIO_SLIDER to binding!!.audioSlider.value,
+        GYROSCOPE_SLIDER to binding!!.gyroscopeSlider.value,
+      )
+      preferences.save(list)
+      navController.popBackStack()
+    }
     binding!!.buttonExit.setOnClickListener {
       navController.popBackStack()
     }

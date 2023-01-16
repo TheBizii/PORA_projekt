@@ -40,14 +40,15 @@ class MapFragment : Fragment() {
   private lateinit var fusedLocationClient: FusedLocationProviderClient //https://developer.android.com/training/location/retrieve-current
   private var lastLocation: Location? = null
   private var locationCallback: LocationCallback
-  private var locationRequest: com.google.android.gms.location.LocationRequest = com.google.android.gms.location.LocationRequest.create()
-    .apply {
-      interval = 1000
-      fastestInterval = 500
-      smallestDisplacement = 10f
-      priority = com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
-      maxWaitTime = 1000
-    }
+  private var locationRequest: com.google.android.gms.location.LocationRequest =
+    com.google.android.gms.location.LocationRequest.create()
+      .apply {
+        interval = 1000
+        fastestInterval = 500
+        smallestDisplacement = 10f
+        priority = com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
+        maxWaitTime = 1000
+      }
   private var requestingLocationUpdates = false
   var startPoint: GeoPoint = GeoPoint(46.55951, 15.63970);
   var marker: Marker? = null
@@ -97,11 +98,20 @@ class MapFragment : Fragment() {
     val fragmentBinding = FragmentMapBinding.inflate(inflater, container, false)
     _binding = fragmentBinding
 
-    val permission = arrayOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE, INTERNET)
+    val permission = arrayOf(
+      ACCESS_FINE_LOCATION,
+      ACCESS_COARSE_LOCATION,
+      READ_EXTERNAL_STORAGE,
+      WRITE_EXTERNAL_STORAGE,
+      INTERNET
+    )
     ActivityCompat.requestPermissions(requireActivity(), permission, 0)
 
     Configuration.getInstance()
-      .load(context, this.context?.getSharedPreferences("me.pora_project.preferences", Context.MODE_PRIVATE))
+      .load(
+        context,
+        this.context?.getSharedPreferences("me.pora_project.preferences", Context.MODE_PRIVATE)
+      )
 
 
     _map = binding.mapView
@@ -192,7 +202,7 @@ class MapFragment : Fragment() {
     val client: SettingsClient? = context?.let { LocationServices.getSettingsClient(it) }
     val task: Task<LocationSettingsResponse> = client!!.checkLocationSettings(builder.build())
     task.addOnSuccessListener { locationSettingsResponse ->
-      Log.e("me.profek10.sporttrails","Settings Location IS OK")
+      Log.e("me.profek10.sporttrails", "Settings Location IS OK")
       //MyEventLocationSettingsChange.globalState = true //default
       initMap()
       // All location settings are satisfied. The client can initialize
@@ -204,7 +214,7 @@ class MapFragment : Fragment() {
       if (exception is ResolvableApiException) {
         // Location settings are not satisfied, but this can be fixed
         // by showing the user a dialog.
-        Log.e("me.profek10.sporttrails","Settings Location addOnFailureListener call settings")
+        Log.e("me.profek10.sporttrails", "Settings Location addOnFailureListener call settings")
         try {
           // Show the dialog by calling startResolutionForResult(),
           // and check the result in onActivityResult().
@@ -216,7 +226,7 @@ class MapFragment : Fragment() {
           }
         } catch (sendEx: IntentSender.SendIntentException) {
           // Ignore the error.
-          Log.e("me.profek10.sporttrails","Settings Location sendEx??")
+          Log.e("me.profek10.sporttrails", "Settings Location sendEx??")
         }
       }
     }

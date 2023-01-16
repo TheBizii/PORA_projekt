@@ -98,7 +98,10 @@ class CaptureFragment : Fragment(), SensorEventListener {
     binding!!.camera.addCameraListener(object : CameraListener() {
       override fun onPictureTaken(result: PictureResult) {
         val data = String(result.data)
-        mqttHelper.publish(MqttHelper.CAMERA_TOPIC, "$data|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}")
+        mqttHelper.publish(
+          MqttHelper.CAMERA_TOPIC,
+          "$data|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}"
+        )
       }
     })
 
@@ -146,8 +149,11 @@ class CaptureFragment : Fragment(), SensorEventListener {
             line = br.readLine()
             text.append(line)
             text.append('\n')
-          } while(line != null)
-          mqttHelper.publish(MqttHelper.AUDIO_TOPIC, "$text|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}")
+          } while (line != null)
+          mqttHelper.publish(
+            MqttHelper.AUDIO_TOPIC,
+            "$text|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}"
+          )
         } catch (e: Exception) {
           println(e)
         } finally {
@@ -177,7 +183,10 @@ class CaptureFragment : Fragment(), SensorEventListener {
       val x: Float = event.values[0]
       val y: Float = event.values[1]
       val z: Float = event.values[2]
-      mqttHelper.publish(MqttHelper.GYROSCOPE_TOPIC, "$x,$y,$z|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}")
+      mqttHelper.publish(
+        MqttHelper.GYROSCOPE_TOPIC,
+        "$x,$y,$z|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}"
+      )
     }
   }
 

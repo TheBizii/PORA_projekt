@@ -3,7 +3,7 @@ package me.pora_project.main
 import android.content.Context
 import android.content.SharedPreferences
 
-class GetSharedPreferences (ctx: Context?) {
+class GetSharedPreferences(ctx: Context?) {
   private val USER_PREF = "USER_PREF"
 
   private var sp: SharedPreferences
@@ -14,7 +14,7 @@ class GetSharedPreferences (ctx: Context?) {
 
   fun save(list: MutableMap<String, Float>) {
     val editor = sp.edit()
-    for (el in list){
+    for (el in list) {
       println(el)
       editor.putString(el.key, el.value.toString());
     }
@@ -23,7 +23,7 @@ class GetSharedPreferences (ctx: Context?) {
 
   fun show(list: MutableSet<String>): MutableList<Float> {
     val out = mutableListOf<Float>()
-    for (el in list){
+    for (el in list) {
       println(el)
       out.add(sp.getString(el, "5.0")?.toFloat() ?: 5.0f)
     }

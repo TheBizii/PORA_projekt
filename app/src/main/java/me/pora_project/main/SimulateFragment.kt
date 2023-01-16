@@ -1,11 +1,7 @@
 package me.pora_project.main
 
-import android.content.Context.SENSOR_SERVICE
 import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import android.media.MediaRecorder
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -15,15 +11,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
-import com.otaliastudios.cameraview.CameraListener
-import com.otaliastudios.cameraview.PictureResult
 import me.pora_project.main.databinding.FragmentSimulateBinding
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
 import org.eclipse.paho.client.mqttv3.MqttCallback
 import org.eclipse.paho.client.mqttv3.MqttMessage
-import java.io.BufferedReader
-import java.io.File
-import java.io.FileReader
 import java.time.LocalDateTime
 
 
@@ -105,8 +96,13 @@ class SimulateFragment : Fragment() {
     val handler = Handler()
     val runnableSimulate: Runnable = object : Runnable {
       override fun run() {
-        val data = (binding!!.editTextFrom.text.toString().toInt().. binding!!.editTextFrom.text.toString().toInt()).random()
-        mqttHelper.publish(MqttHelper.CAMERA_TOPIC, "$data|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}")
+        val data =
+          (binding!!.editTextFrom.text.toString().toInt()..binding!!.editTextFrom.text.toString()
+            .toInt()).random()
+        mqttHelper.publish(
+          MqttHelper.CAMERA_TOPIC,
+          "$data|$time|${sharedViewModel.lastLocation?.latitude},${sharedViewModel.lastLocation?.longitude}"
+        )
         if (loopback) {
           handler.postDelayed(this, out[0].toLong() * 100)
         }
